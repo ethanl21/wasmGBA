@@ -2,7 +2,7 @@ import { useState } from "react";
 import { Pause, Play, FastForward, Volume2, VolumeX } from "lucide-react";
 import { Card } from "@/components/ui/card";
 import { Toggle } from "@/components/ui/toggle";
-import { Slider } from "../ui/slider";
+import { Slider } from "@/components/ui/slider";
 
 export default function QuickControls() {
   const [isPaused, setIsPaused] = useState(false);

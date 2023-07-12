@@ -1,11 +1,11 @@
-import { Button } from "../ui/button";
+import { Button } from "@/components/ui/button";
 import {
   Dialog,
   DialogContent,
   DialogHeader,
   DialogTitle,
   DialogDescription,
-} from "../ui/dialog";
+} from "@/components/ui/dialog";
 import { Github } from "lucide-react";
 
 interface AboutDialogProps {

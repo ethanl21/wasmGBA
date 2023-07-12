@@ -11,7 +11,7 @@ import {
   MenubarSubTrigger,
   MenubarTrigger,
 } from "@/components/ui/menubar";
-import { Slider } from "../ui/slider";
+import { Slider } from "@/components/ui/slider";
 import {
   Save,
   TimerReset,
