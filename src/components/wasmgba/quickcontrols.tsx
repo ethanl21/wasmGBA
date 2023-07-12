@@ -2,21 +2,15 @@ import { useState } from 'react';
 import { Pause, Play, FastForward, Volume2, VolumeX } from 'lucide-react';
 import {
     Card,
-    CardContent,
-    CardDescription,
-    CardFooter,
-    CardHeader,
-    CardTitle,
   } from "@/components/ui/card";
-import { Button } from "@/components/ui/button";
 import { Toggle } from "@/components/ui/toggle"
 import { Slider } from '../ui/slider';
 
 
 export default function QuickControls(){
-    let [isPaused, setIsPaused] = useState(false);
-    let [isMuted, setIsMuted] = useState(false);
-    let [volumePercent, setVolumePercent] = useState(100);
+    const [isPaused, setIsPaused] = useState(false);
+    const [isMuted, setIsMuted] = useState(false);
+    const [volumePercent, setVolumePercent] = useState(100);
 
     return(
         <>

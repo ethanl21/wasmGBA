@@ -17,6 +17,7 @@ module.exports = {
     tsconfigRootDir: __dirname,
   },
   plugins: ['react-refresh'],
+  ignorePatterns: ['src/components/ui/**'], // ignore shadcn ui components for now since they're unmodified
   rules: {
     'react-refresh/only-export-components': [
       'warn',

@@ -26,7 +26,7 @@ type SaveStateMenuProps = {
   mode: "save" | "load" | "export";
 };
 function SaveStateMenu(props: SaveStateMenuProps) {
-  let content = [];
+  const content = [];
   for (let i = 0; i < props.saveStatesCount; i++) {
     let icon = null;
     switch (props.mode) {
