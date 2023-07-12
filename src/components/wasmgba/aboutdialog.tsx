@@ -9,19 +9,18 @@ import {
 import { Github } from "lucide-react";
 
 interface AboutDialogProps {
-  upstreamRepo?: string | URL;
-  repo?: string | URL;
+  upstreamRepo?: string;
+  repo?: string;
   open?: boolean;
   setIsOpen?: (open: boolean) => void;
 }
 export default function AboutDialog(props: AboutDialogProps) {
-  if (typeof props.upstreamRepo === "string")
-    props.upstreamRepo = new URL(props.upstreamRepo);
-
   let upstream = "";
   let commit = "";
   if (props.upstreamRepo != null) {
-    const parts = props.upstreamRepo?.pathname.split("/");
+    // copy string to prevent mutation of env var
+    const upstream_url = new URL(("" + props.upstreamRepo).slice(1));
+    const parts = upstream_url?.pathname.split("/");
     upstream = `${parts[1]}/${parts[2]}`;
     commit = `${parts[4]}`.slice(0, 10);
   }
@@ -40,7 +39,7 @@ export default function AboutDialog(props: AboutDialogProps) {
                   target="_blank"
                   rel="noopener noreferrer"
                 >
-                  {upstream} @ {commit}
+                  {upstream}@{commit}
                 </a>
               </DialogDescription>
             )}

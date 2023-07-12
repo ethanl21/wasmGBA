@@ -9,19 +9,13 @@ function App() {
   const [aboutDialogIsOpen, setAboutDialogIsOpen] = useState(false);
   const [usageDialogIsOpen, setUsageDialogIsOpen] = useState(false);
 
-  // todo: use a config file instead of hardcoding these
-  const mGBARepoURL = new URL(
-    "https://github.com/thenick775/mgba/tree/c3d5ca5d5ffd47b2866fe6e40a7d551d845e512a"
-  );
-  const sourceRepoURL = new URL("https://github.com/ethanl21/wasmGBA");
-
   return (
     <>
       <AboutDialog
         open={aboutDialogIsOpen}
         setIsOpen={setAboutDialogIsOpen}
-        upstreamRepo={mGBARepoURL}
-        repo={sourceRepoURL}
+        upstreamRepo={MGBA_UPSTREAM_REPO_URL}
+        repo={WASMGBA_REPO_URL}
       />
       <UsageDialog open={usageDialogIsOpen} setIsOpen={setUsageDialogIsOpen} />
 
@@ -30,7 +24,8 @@ function App() {
           <TopMenuBar
             onOpenAboutDialog={() => setAboutDialogIsOpen(true)}
             onOpenUsageDialog={() => setUsageDialogIsOpen(true)}
-            repo={sourceRepoURL}
+            repo={WASMGBA_REPO_URL}
+            licenses={WASMGBA_OSS_LICENSES_URL}
           />
         </header>
 

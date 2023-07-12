@@ -90,7 +90,7 @@ export default function UsageDialog(props: UsageDialogProps) {
               </TableHeader>
               <TableBody>
                 {keybinds.map((keybind) => (
-                  <TableRow>
+                  <TableRow key={`gba-button-${keybind.gba}`}>
                     <td className="px-4 border-slate-200 border-r">
                       {keybind.gba}
                     </td>
