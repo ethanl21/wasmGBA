@@ -40,18 +40,18 @@ function SaveStateMenu(props: SaveStateMenuProps) {
         icon = <FileDown width="16" height="16" />;
         break;
       default:
-        icon = <></>;
+        icon = null;
     }
 
     content.push(
       <MenubarItem className="justify-between">
         Slot {i}
-        {icon}
+        {icon && icon}
       </MenubarItem>
     );
   }
 
-  return content;
+  return <>{content}</>;
 }
 
 interface TopMenuBarProps {

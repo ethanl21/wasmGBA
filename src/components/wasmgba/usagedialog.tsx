@@ -1,10 +1,11 @@
+import { Dialog, DialogContent, DialogHeader, DialogTitle } from "../ui/dialog";
 import {
-  Dialog,
-  DialogContent,
-  DialogHeader,
-  DialogTitle,
-} from "../ui/dialog";
-import { Table, TableBody, TableHead, TableHeader, TableRow } from "../ui/table";
+  Table,
+  TableBody,
+  TableHead,
+  TableHeader,
+  TableRow,
+} from "../ui/table";
 
 interface UsageDialogProps {
   open?: boolean;
@@ -55,42 +56,54 @@ export default function UsageDialog(props: UsageDialogProps) {
   ];
 
   return (
-    <Dialog open={props.open} onOpenChange={props.setIsOpen}>
-      <DialogContent>
-        <DialogHeader>
-          <DialogTitle>Usage</DialogTitle>
-        </DialogHeader>
-        <div className="pl-5">
-          <p>To get started:</p>
-          <ul className="list-disc pl-10">
-            <li>Upload a save file via File &gt; Import Save (optional)</li>
-            <li>Upload a cheats file via File &gt; Import Cheats (optional)</li>
-            <li>Upload ROM file via File &gt; Import ROM (required)</li>
-            <li>Have fun playing your game!</li>
-          </ul>
-        </div>
-        <h4 className="text-lg font-semibold leading-none tracking-tight">
-          Controls
-        </h4>
-        <div>
-          <Table className="border-slate-200 border-2">
-            <TableHeader>
-            <TableRow>
-                <TableHead className="border-slate-200 border-r">GBA Button</TableHead>
-                <TableHead className="border-slate-200 border-r">Keyboard Input</TableHead>
-            </TableRow>
-            </TableHeader>
-            <TableBody>
+    <>
+      <Dialog open={props.open} onOpenChange={props.setIsOpen}>
+        <DialogContent>
+          <DialogHeader>
+            <DialogTitle>Usage</DialogTitle>
+          </DialogHeader>
+          <div className="pl-5">
+            <p>To get started:</p>
+            <ul className="list-disc pl-10">
+              <li>Upload a save file via File &gt; Import Save (optional)</li>
+              <li>
+                Upload a cheats file via File &gt; Import Cheats (optional)
+              </li>
+              <li>Upload ROM file via File &gt; Import ROM (required)</li>
+              <li>Have fun playing your game!</li>
+            </ul>
+          </div>
+          <h4 className="text-lg font-semibold leading-none tracking-tight">
+            Controls
+          </h4>
+          <div>
+            <Table className="border-slate-200 border-2">
+              <TableHeader>
+                <TableRow>
+                  <TableHead className="border-slate-200 border-r">
+                    GBA Button
+                  </TableHead>
+                  <TableHead className="border-slate-200 border-r">
+                    Keyboard Input
+                  </TableHead>
+                </TableRow>
+              </TableHeader>
+              <TableBody>
                 {keybinds.map((keybind) => (
-                    <TableRow>
-                        <td className="px-4 border-slate-200 border-r">{keybind.gba}</td>
-                        <td className="px-4 border-slate-200 border-l">{keybind.keyboard}</td>
-                    </TableRow>
+                  <TableRow>
+                    <td className="px-4 border-slate-200 border-r">
+                      {keybind.gba}
+                    </td>
+                    <td className="px-4 border-slate-200 border-l">
+                      {keybind.keyboard}
+                    </td>
+                  </TableRow>
                 ))}
-            </TableBody>
-          </Table>
-        </div>
-      </DialogContent>
-    </Dialog>
+              </TableBody>
+            </Table>
+          </div>
+        </DialogContent>
+      </Dialog>
+    </>
   );
 }

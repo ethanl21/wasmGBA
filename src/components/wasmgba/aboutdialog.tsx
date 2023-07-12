@@ -31,38 +31,40 @@ export default function AboutDialog(props: AboutDialogProps) {
   }
 
   return (
-    <Dialog open={props.open} onOpenChange={props.setIsOpen}>
-      <DialogContent>
-        <DialogHeader>
-          <DialogTitle>wasmGBA</DialogTitle>
-          {upstream != '' && commit != '' && (
-            <DialogDescription>
-              using&nbsp;
-              <a
-                href={props.upstreamRepo?.toString()}
-                target="_blank"
-                rel="noopener noreferrer"
-              >
-                {upstream} @ {commit}
-              </a>
-            </DialogDescription>
-          )}
-        </DialogHeader>
+    <>
+      <Dialog open={props.open} onOpenChange={props.setIsOpen}>
+        <DialogContent>
+          <DialogHeader>
+            <DialogTitle>wasmGBA</DialogTitle>
+            {upstream != "" && commit != "" && (
+              <DialogDescription>
+                using&nbsp;
+                <a
+                  href={props.upstreamRepo?.toString()}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                >
+                  {upstream} @ {commit}
+                </a>
+              </DialogDescription>
+            )}
+          </DialogHeader>
 
-        <div>
-          <p>
-            A simple web-based frontend for mGBA. Emulation is performed
-            entirely in the browser; no ROMs are provided and user-supplied ROMs
-            are not uploaded to the server.
-          </p>
-        </div>
-        <div className="flex justify-end">
-          <Button className="space-x-2" onClick={handleRepoBtnClick}>
-            <Github />
-            Source Code
-          </Button>
-        </div>
-      </DialogContent>
-    </Dialog>
+          <div>
+            <p>
+              A simple web-based frontend for mGBA. Emulation is performed
+              entirely in the browser; no ROMs are provided and user-supplied
+              ROMs are not uploaded to the server.
+            </p>
+          </div>
+          <div className="flex justify-end">
+            <Button className="space-x-2" onClick={handleRepoBtnClick}>
+              <Github />
+              Source Code
+            </Button>
+          </div>
+        </DialogContent>
+      </Dialog>
+    </>
   );
 }
