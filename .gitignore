@@ -79,6 +79,9 @@ typings/
 # vuepress build output
 .vuepress/dist
 
+# vite build output
+dist/
+
 # Serverless directories
 .serverless/
 
