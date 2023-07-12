@@ -59,10 +59,18 @@ interface TopMenuBarProps {
   onOpenUsageDialog: () => void;
   version?: string;
   upstream?: string;
-  repo?: string;
-  licenses?: string;
+  repo?: string | URL;
+  licenses?: string | URL;
 }
 export default function TopMenuBar(props: TopMenuBarProps) {
+  if (typeof props.repo === "string") {
+    props.repo = new URL(props.repo);
+  }
+
+  if (typeof props.licenses === "string") {
+    props.licenses = new URL(props.licenses);
+  }
+
   return (
     <>
       <Menubar>

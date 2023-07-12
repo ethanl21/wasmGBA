@@ -15,10 +15,6 @@ interface AboutDialogProps {
   setIsOpen?: (open: boolean) => void;
 }
 export default function AboutDialog(props: AboutDialogProps) {
-  const handleRepoBtnClick = () => {
-    window.open(props.repo, "_blank");
-  };
-
   if (typeof props.upstreamRepo === "string")
     props.upstreamRepo = new URL(props.upstreamRepo);
 
@@ -58,7 +54,10 @@ export default function AboutDialog(props: AboutDialogProps) {
             </p>
           </div>
           <div className="flex justify-end">
-            <Button className="space-x-2" onClick={handleRepoBtnClick}>
+            <Button
+              className="space-x-2"
+              onClick={() => window.open(props.repo, "_blank")}
+            >
               <Github />
               Source Code
             </Button>
