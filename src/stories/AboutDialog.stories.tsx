@@ -4,26 +4,18 @@ import AboutDialog from "@/components/wasmgba/AboutDialog";
 
 const meta: Meta<typeof AboutDialog> = {
   component: AboutDialog,
+  title: "Windows/AboutDialog",
   args: {
-    open: false,
+    open: true,
+    upstreamRepo: "https://example.com",
+    repo: "https://example.com",
   },
   argTypes: {
     setIsOpen: {
-      action: "setIsOpen",
+      action: "clicked",
       table: {
         disable: true,
       },
-    },
-    open: {
-      type: "boolean",
-      defaultValue: "false",
-    },
-    upstreamRepo: {
-      type: "string",
-      defaultValue: "https://example.com",
-    },
-    repo: {
-      type: "string",
     },
   },
   parameters: {
@@ -34,16 +26,6 @@ const meta: Meta<typeof AboutDialog> = {
 export default meta;
 type Story = StoryObj<typeof AboutDialog>;
 export const Default: Story = {
-  args: {
-    open: false,
-    upstreamRepo: "https://example.com",
-    repo: "https://example.com",
-  },
-  argTypes: {
-    setIsOpen: {
-      action: "clicked",
-    },
-  },
   render: ({ open, upstreamRepo, repo, setIsOpen }) => {
     return (
       <div>

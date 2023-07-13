@@ -4,6 +4,7 @@ import TopMenuBar from "@/components/wasmgba/TopMenubar";
 
 const meta: Meta<typeof TopMenuBar> = {
   component: TopMenuBar,
+  title: "Components/TopMenuBar",
   argTypes: {
     onOpenAboutDialog: {
       action: "openAboutDialog",

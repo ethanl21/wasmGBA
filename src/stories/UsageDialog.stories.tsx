@@ -5,8 +5,9 @@ import { Button } from "@/components/ui/button";
 
 const meta: Meta<typeof UsageDialog> = {
   component: UsageDialog,
+  title: "Windows/UsageDialog",
   args: {
-    open: false,
+    open: true,
   },
   argTypes: {
     setIsOpen: {

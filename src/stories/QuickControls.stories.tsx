@@ -4,6 +4,7 @@ import QuickControls from "@/components/wasmgba/QuickControls";
 
 const meta: Meta<typeof QuickControls> = {
   component: QuickControls,
+  title: "Components/QuickControls",
   argTypes: {
     onPausedChanged: {
       action: "onPausedChanged",
