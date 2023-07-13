@@ -82,6 +82,9 @@ typings/
 # vite build output
 dist/
 
+# storybook build output
+storybook-static/
+
 # Serverless directories
 .serverless/
 
