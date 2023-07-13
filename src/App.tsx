@@ -1,9 +1,10 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import "./App.css";
-import TopMenuBar from "./components/wasmgba/TopMenubar";
-import QuickControls from "./components/wasmgba/QuickControls";
-import AboutDialog from "./components/wasmgba/AboutDialog";
-import UsageDialog from "./components/wasmgba/UsageDialog";
+import TopMenuBar from "@/components/wasmgba/TopMenubar";
+import QuickControls from "@/components/wasmgba/QuickControls";
+import AboutDialog from "@/components/wasmgba/AboutDialog";
+import UsageDialog from "@/components/wasmgba/UsageDialog";
+import { useTheme } from "@/lib/ThemeProviderUseTheme";
 
 function App() {
   const [aboutDialogIsOpen, setAboutDialogIsOpen] = useState(false);
@@ -14,6 +15,34 @@ function App() {
   const [volume, setVolume] = useState([100]);
   const [fastForward, setFastForward] = useState(false);
   const [pixelated, setPixelated] = useState(false);
+
+  const [_mode, setMode] = useState("light");
+  const { setTheme } = useTheme();
+
+  const onSelectMode = (mode: string) => {
+    setMode(mode);
+    setTheme(mode);
+  };
+
+  useEffect(() => {
+    window
+      .matchMedia("(prefers-color-scheme: dark)")
+      .addEventListener("change", (e) =>
+        onSelectMode(e.matches ? "dark" : "light")
+      );
+
+    onSelectMode(
+      window.matchMedia("(prefers-color-scheme: dark)").matches
+        ? "dark"
+        : "light"
+    );
+
+    return () => {
+      window
+        .matchMedia("(prefers-color-scheme: dark)")
+        .removeEventListener("change", () => {});
+    };
+  });
 
   return (
     <>
@@ -44,7 +73,6 @@ function App() {
             onPixelatedChange={setPixelated}
             upstream={MGBA_UPSTREAM_REPO_URL}
             version={WASMGBA_VERSION}
-
           />
         </header>
 
