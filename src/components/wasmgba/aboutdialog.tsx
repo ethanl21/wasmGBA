@@ -9,8 +9,8 @@ import {
 import { Github } from "lucide-react";
 
 interface AboutDialogProps {
-  upstreamRepo?: string;
-  repo?: string;
+  upstreamRepo: string;
+  repo: string;
   open?: boolean;
   setIsOpen?: (open: boolean) => void;
 }

@@ -9,6 +9,10 @@ function App() {
   const [aboutDialogIsOpen, setAboutDialogIsOpen] = useState(false);
   const [usageDialogIsOpen, setUsageDialogIsOpen] = useState(false);
 
+  const [paused, setPaused] = useState(false);
+  const [muted, setMuted] = useState(false);
+  const [volume, setVolume] = useState(100);
+
   return (
     <>
       <AboutDialog
@@ -31,7 +35,14 @@ function App() {
 
         <main>
           <div className="fixed bottom-0 left-0 m-5 w-1/3">
-            <QuickControls />
+            <QuickControls
+              paused={paused}
+              onPausedChanged={setPaused}
+              muted={muted}
+              onMutedChanged={setMuted}
+              volume={volume}
+              onVolumeChanged={setVolume}
+            />
           </div>
         </main>
       </div>

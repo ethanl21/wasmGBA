@@ -57,10 +57,20 @@ function SaveStateMenu(props: SaveStateMenuProps) {
 interface TopMenuBarProps {
   onOpenAboutDialog: () => void;
   onOpenUsageDialog: () => void;
-  version?: string;
-  upstream?: string;
-  repo?: string;
-  licenses?: string;
+  version: string;
+  upstream: string;
+  repo: string;
+  licenses: string;
+  volume: number;
+  onVolumeChange: (volume: number[]) => void;
+  muted: boolean;
+  onMutedChange: (muted: boolean) => void;
+  paused: boolean;
+  onPausedChange: (paused: boolean) => void;
+  fastForward: boolean;
+  onFastForwardChange: (fastForward: boolean) => void;
+  pixelated: boolean;
+  onPixelatedChange: (pixelated: boolean) => void;
 }
 export default function TopMenuBar(props: TopMenuBarProps) {
   return (
@@ -113,11 +123,22 @@ export default function TopMenuBar(props: TopMenuBarProps) {
             </MenubarItem>
             <MenubarItem>Shutdown</MenubarItem>
             <MenubarSeparator />
-            <MenubarCheckboxItem>Pixelated Scaling</MenubarCheckboxItem>
-            <MenubarCheckboxItem>
+            <MenubarCheckboxItem
+              checked={props.pixelated}
+              onCheckedChange={props.onPixelatedChange}
+            >
+              Pixelated Scaling
+            </MenubarCheckboxItem>
+            <MenubarCheckboxItem
+              checked={props.paused}
+              onCheckedChange={props.onPausedChange}
+            >
               Pause <MenubarShortcut>⌘P</MenubarShortcut>
             </MenubarCheckboxItem>
-            <MenubarCheckboxItem>
+            <MenubarCheckboxItem
+              checked={props.fastForward}
+              onCheckedChange={props.onFastForwardChange}
+            >
               Fast Forward <MenubarShortcut>⌘F</MenubarShortcut>
             </MenubarCheckboxItem>
           </MenubarContent>
@@ -125,13 +146,21 @@ export default function TopMenuBar(props: TopMenuBarProps) {
         <MenubarMenu>
           <MenubarTrigger>Audio</MenubarTrigger>
           <MenubarContent>
-            <MenubarItem>
+            <MenubarCheckboxItem
+              checked={props.muted}
+              onCheckedChange={props.onMutedChange}
+            >
               Mute <MenubarShortcut>⌘M</MenubarShortcut>
-            </MenubarItem>
+            </MenubarCheckboxItem>
             <MenubarSeparator />
-            <MenubarItem>
-              <Slider defaultValue={[100]} max={100} step={1} />
-            </MenubarItem>
+            <Slider
+              defaultValue={[100]}
+              max={100}
+              step={1}
+              className="p-2"
+              value={[props.volume]}
+              onValueChange={props.onVolumeChange}
+            />
           </MenubarContent>
         </MenubarMenu>
 

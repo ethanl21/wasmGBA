@@ -4,34 +4,38 @@ import { Card } from "@/components/ui/card";
 import { Toggle } from "@/components/ui/toggle";
 import { Slider } from "@/components/ui/slider";
 
-export default function QuickControls() {
-  const [isPaused, setIsPaused] = useState(false);
-  const [isMuted, setIsMuted] = useState(false);
-  const [volumePercent, setVolumePercent] = useState(100);
-
+interface QuickControlsProps {
+  paused: boolean;
+  onPausedChanged: (paused: boolean) => void;
+  muted: boolean;
+  onMutedChanged: (muted: boolean) => void;
+  volume: number;
+  onVolumeChanged: (volume: number) => void;
+}
+export default function QuickControls(props: QuickControlsProps) {
   return (
     <>
       <Card className="flex flex-row items-center space-x-2 px-2">
-        <Toggle aria-label="Pause" onClick={() => setIsPaused(!isPaused)}>
-          {isPaused ? <Play /> : <Pause />}
+        <Toggle aria-label="Pause" onClick={() => props.onPausedChanged(props.paused)}>
+          {props.paused ? <Play /> : <Pause />}
         </Toggle>
         <Toggle aria-label="Fast Forward">
           <FastForward />
         </Toggle>
         <Toggle
           aria-label="Mute"
-          pressed={isMuted}
-          onPressedChange={(val) => setIsMuted(val)}
+          pressed={props.muted}
+          onPressedChange={(val) => props.onMutedChanged(val)}
         >
-          {isMuted ? <VolumeX /> : <Volume2 />}
+          {props.muted ? <VolumeX /> : <Volume2 />}
         </Toggle>
         <Slider
           aria-label="Volume"
-          value={[volumePercent]}
-          onValueChange={(e) => setVolumePercent(e[0])}
-          disabled={isMuted}
+          value={[props.volume]}
+          onValueChange={(e) => props.onVolumeChanged(e[0])}
+          disabled={props.muted}
         />
-        <p className="text-center content-center">{volumePercent}%</p>
+        <p className="text-center content-center">{props.volume}%</p>
       </Card>
     </>
   );
