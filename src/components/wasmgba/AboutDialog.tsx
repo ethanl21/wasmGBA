@@ -9,17 +9,22 @@ import {
 import { Github } from "lucide-react";
 
 interface AboutDialogProps {
-  upstreamRepo: string;
-  repo: string;
+  upstreamRepo?: string;
+  repo?: string;
   open?: boolean;
   setIsOpen?: (open: boolean) => void;
 }
-export default function AboutDialog(props: AboutDialogProps) {
+export default function AboutDialog({
+  upstreamRepo = "",
+  repo = "",
+  open = false,
+  setIsOpen = () => {}
+}: AboutDialogProps) {
   let upstream = "";
   let commit = "";
-  if (props.upstreamRepo != null) {
+  if (upstreamRepo != null) {
     // copy string to prevent mutation of env var
-    const upstream_url = new URL(("" + props.upstreamRepo).slice(1));
+    const upstream_url = new URL(("" + upstreamRepo).slice(1));
     const parts = upstream_url?.pathname.split("/");
     upstream = `${parts[1]}/${parts[2]}`;
     commit = `${parts[4]}`.slice(0, 10);
@@ -27,7 +32,7 @@ export default function AboutDialog(props: AboutDialogProps) {
 
   return (
     <>
-      <Dialog open={props.open} onOpenChange={props.setIsOpen}>
+      <Dialog open={open} onOpenChange={setIsOpen}>
         <DialogContent>
           <DialogHeader>
             <DialogTitle>wasmGBA</DialogTitle>
@@ -35,7 +40,7 @@ export default function AboutDialog(props: AboutDialogProps) {
               <DialogDescription>
                 using&nbsp;
                 <a
-                  href={props.upstreamRepo?.toString()}
+                  href={upstreamRepo?.toString()}
                   target="_blank"
                   rel="noopener noreferrer"
                 >
@@ -55,7 +60,7 @@ export default function AboutDialog(props: AboutDialogProps) {
           <div className="flex justify-end">
             <Button
               className="space-x-2"
-              onClick={() => window.open(props.repo, "_blank")}
+              onClick={() => window.open(repo, "_blank")}
             >
               <Github />
               Source Code

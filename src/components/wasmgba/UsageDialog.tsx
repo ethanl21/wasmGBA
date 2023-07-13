@@ -16,7 +16,10 @@ interface UsageDialogProps {
   open?: boolean;
   setIsOpen?: (open: boolean) => void;
 }
-export default function UsageDialog(props: UsageDialogProps) {
+export default function UsageDialog({
+  open = false,
+  setIsOpen = () => {},
+}: UsageDialogProps) {
   const keybinds = [
     {
       gba: "A",
@@ -62,7 +65,7 @@ export default function UsageDialog(props: UsageDialogProps) {
 
   return (
     <>
-      <Dialog open={props.open} onOpenChange={props.setIsOpen}>
+      <Dialog open={open} onOpenChange={setIsOpen}>
         <DialogContent>
           <DialogHeader>
             <DialogTitle>Usage</DialogTitle>

@@ -55,24 +55,37 @@ function SaveStateMenu(props: SaveStateMenuProps) {
 }
 
 interface TopMenuBarProps {
-  onOpenAboutDialog: () => void;
-  onOpenUsageDialog: () => void;
-  version: string;
-  upstream: string;
-  repo: string;
-  licenses: string;
-  volume: number;
-  onVolumeChange: (volume: number[]) => void;
-  muted: boolean;
-  onMutedChange: (muted: boolean) => void;
-  paused: boolean;
-  onPausedChange: (paused: boolean) => void;
-  fastForward: boolean;
-  onFastForwardChange: (fastForward: boolean) => void;
-  pixelated: boolean;
-  onPixelatedChange: (pixelated: boolean) => void;
+  onOpenAboutDialog?: () => void;
+  onOpenUsageDialog?: () => void;
+  repo?: string;
+  licenses?: string;
+  volume?: number;
+  onVolumeChange?: (volume: number[]) => void;
+  muted?: boolean;
+  onMutedChange?: (muted: boolean) => void;
+  paused?: boolean;
+  onPausedChange?: (paused: boolean) => void;
+  fastForward?: boolean;
+  onFastForwardChange?: (fastForward: boolean) => void;
+  pixelated?: boolean;
+  onPixelatedChange?: (pixelated: boolean) => void;
 }
-export default function TopMenuBar(props: TopMenuBarProps) {
+export default function TopMenuBar({
+  onOpenAboutDialog = () => {},
+  onOpenUsageDialog = () => {},
+  repo = "",
+  licenses = "",
+  volume = 100,
+  onVolumeChange = () => {},
+  muted = false,
+  onMutedChange = () => {},
+  paused = false,
+  onPausedChange = () => {},
+  fastForward = false,
+  onFastForwardChange = () => {},
+  pixelated = false,
+  onPixelatedChange = () => {},
+}: TopMenuBarProps) {
   return (
     <>
       <Menubar>
@@ -124,20 +137,20 @@ export default function TopMenuBar(props: TopMenuBarProps) {
             <MenubarItem>Shutdown</MenubarItem>
             <MenubarSeparator />
             <MenubarCheckboxItem
-              checked={props.pixelated}
-              onCheckedChange={props.onPixelatedChange}
+              checked={pixelated}
+              onCheckedChange={onPixelatedChange}
             >
               Pixelated Scaling
             </MenubarCheckboxItem>
             <MenubarCheckboxItem
-              checked={props.paused}
-              onCheckedChange={props.onPausedChange}
+              checked={paused}
+              onCheckedChange={onPausedChange}
             >
               Pause <MenubarShortcut>⌘P</MenubarShortcut>
             </MenubarCheckboxItem>
             <MenubarCheckboxItem
-              checked={props.fastForward}
-              onCheckedChange={props.onFastForwardChange}
+              checked={fastForward}
+              onCheckedChange={onFastForwardChange}
             >
               Fast Forward <MenubarShortcut>⌘F</MenubarShortcut>
             </MenubarCheckboxItem>
@@ -147,8 +160,8 @@ export default function TopMenuBar(props: TopMenuBarProps) {
           <MenubarTrigger>Audio</MenubarTrigger>
           <MenubarContent>
             <MenubarCheckboxItem
-              checked={props.muted}
-              onCheckedChange={props.onMutedChange}
+              checked={muted}
+              onCheckedChange={onMutedChange}
             >
               Mute <MenubarShortcut>⌘M</MenubarShortcut>
             </MenubarCheckboxItem>
@@ -158,8 +171,8 @@ export default function TopMenuBar(props: TopMenuBarProps) {
               max={100}
               step={1}
               className="p-2"
-              value={[props.volume]}
-              onValueChange={props.onVolumeChange}
+              value={[volume]}
+              onValueChange={onVolumeChange}
             />
           </MenubarContent>
         </MenubarMenu>
@@ -169,14 +182,14 @@ export default function TopMenuBar(props: TopMenuBarProps) {
           <MenubarContent>
             <MenubarItem
               className="justify-between"
-              onClick={props.onOpenAboutDialog}
+              onClick={onOpenAboutDialog}
             >
               About
               <AppWindow width="16" height="16" />
             </MenubarItem>
             <MenubarItem
               className="justify-between"
-              onClick={props.onOpenUsageDialog}
+              onClick={onOpenUsageDialog}
             >
               Usage
               <AppWindow width="16" height="16" />
@@ -185,7 +198,7 @@ export default function TopMenuBar(props: TopMenuBarProps) {
             <MenubarItem
               className="justify-between"
               onClick={() => {
-                window.open(props.repo, "_blank");
+                window.open(repo, "_blank");
               }}
             >
               Source Code
@@ -194,7 +207,7 @@ export default function TopMenuBar(props: TopMenuBarProps) {
             <MenubarItem
               className="justify-between"
               onClick={() => {
-                window.open(props.licenses, "_blank");
+                window.open(licenses, "_blank");
               }}
             >
               Licenses

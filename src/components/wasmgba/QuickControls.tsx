@@ -4,40 +4,47 @@ import { Toggle } from "@/components/ui/toggle";
 import { Slider } from "@/components/ui/slider";
 
 interface QuickControlsProps {
-  paused: boolean;
-  onPausedChanged: (paused: boolean) => void;
-  muted: boolean;
-  onMutedChanged: (muted: boolean) => void;
-  volume: number;
-  onVolumeChanged: (volume: number[]) => void;
+  paused?: boolean;
+  onPausedChanged?: (paused: boolean) => void;
+  muted?: boolean;
+  onMutedChanged?: (muted: boolean) => void;
+  volume?: number;
+  onVolumeChanged?: (volume: number[]) => void;
 }
-export default function QuickControls(props: QuickControlsProps) {
+export default function QuickControls({
+  paused = false,
+  onPausedChanged = () => {},
+  muted = false,
+  onMutedChanged = () => {},
+  volume = 100,
+  onVolumeChanged = () => {},
+}: QuickControlsProps) {
   return (
     <>
       <Card className="flex flex-row items-center space-x-2 px-2">
         <Toggle
           aria-label="Pause"
-          onPressedChange={(val) => props.onPausedChanged(val)}
+          onPressedChange={(val) => onPausedChanged(val)}
         >
-          {props.paused ? <Play /> : <Pause />}
+          {paused ? <Play /> : <Pause />}
         </Toggle>
         <Toggle aria-label="Fast Forward">
           <FastForward />
         </Toggle>
         <Toggle
           aria-label="Mute"
-          pressed={props.muted}
-          onPressedChange={(val) => props.onMutedChanged(val)}
+          pressed={muted}
+          onPressedChange={(val) => onMutedChanged(val)}
         >
-          {props.muted ? <VolumeX /> : <Volume2 />}
+          {muted ? <VolumeX /> : <Volume2 />}
         </Toggle>
         <Slider
           aria-label="Volume"
-          value={[props.volume]}
-          onValueChange={(e) => props.onVolumeChanged(e)}
-          disabled={props.muted}
+          value={[volume]}
+          onValueChange={(e) => onVolumeChanged(e)}
+          disabled={muted}
         />
-        <p className="text-center content-center">{props.volume}%</p>
+        <p className="text-center content-center">{volume}%</p>
       </Card>
     </>
   );
