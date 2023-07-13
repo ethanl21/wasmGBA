@@ -1,11 +1,9 @@
-import type { Meta } from "@storybook/react";
-import { useArgs } from "@storybook/preview-api";
+import type { Meta, StoryObj } from "@storybook/react";
 
 import TopMenuBar from "@/components/wasmgba/TopMenubar";
 
 const meta: Meta<typeof TopMenuBar> = {
   component: TopMenuBar,
-  tags: ["autodocs"],
   argTypes: {
     onOpenAboutDialog: {
       action: "openAboutDialog",
@@ -75,47 +73,46 @@ const meta: Meta<typeof TopMenuBar> = {
 
 export default meta;
 
-export const Default = ({ ...args }) => {
-  const [
-    { paused, volume, muted, fastForward, pixelated, repo, licenses },
-    updateArgs,
-  ] = useArgs();
-
-  return (
-    <div className="flex">
-      <TopMenuBar
-        {...args}
-        paused={paused as boolean}
-        onPausedChange={(paused) => {
-          updateArgs({ paused });
-        }}
-        volume={volume as number}
-        onVolumeChange={(volume) => {
-          updateArgs({ volume });
-        }}
-        muted={muted as boolean}
-        onMutedChange={(muted) => {
-          updateArgs({ muted });
-        }}
-        fastForward={fastForward as boolean}
-        onFastForwardChange={(fastForward) => {
-          updateArgs({ fastForward });
-        }}
-        pixelated={pixelated as boolean}
-        onPixelatedChange={(pixelated) => {
-          updateArgs({ pixelated });
-        }}
-        onOpenAboutDialog={() => {
-          alert("The AboutDialog would be shown here.");
-        }}
-        onOpenUsageDialog={() => {
-          alert("The UsageDialog would be shown here.");
-        }}
-        version=""
-        repo={repo as string}
-        licenses={licenses as string}
-        upstream=""
-      />
-    </div>
-  );
+type Story = StoryObj<typeof TopMenuBar>;
+export const Default: Story = {
+  render: ({
+    paused,
+    volume,
+    muted,
+    fastForward,
+    pixelated,
+    repo,
+    licenses,
+    //upstream,
+    onPausedChange,
+    onVolumeChange,
+    onMutedChange,
+    onFastForwardChange,
+    onPixelatedChange,
+    onOpenAboutDialog,
+    onOpenUsageDialog,
+  }) => {
+    return (
+      <div className="flex">
+        <TopMenuBar
+          paused={paused}
+          onPausedChange={onPausedChange}
+          volume={volume}
+          onVolumeChange={onVolumeChange}
+          muted={muted}
+          onMutedChange={onMutedChange}
+          fastForward={fastForward}
+          onFastForwardChange={onFastForwardChange}
+          pixelated={pixelated}
+          onPixelatedChange={onPixelatedChange}
+          onOpenAboutDialog={onOpenAboutDialog}
+          onOpenUsageDialog={onOpenUsageDialog}
+          version=""
+          repo={repo}
+          licenses={licenses}
+          upstream=""
+        />
+      </div>
+    );
+  },
 };

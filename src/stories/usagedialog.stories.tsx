@@ -1,5 +1,4 @@
-import type { Meta } from "@storybook/react";
-import { useArgs } from "@storybook/preview-api";
+import type { Meta, StoryObj } from "@storybook/react";
 
 import UsageDialog from "@/components/wasmgba/UsageDialog";
 import { Button } from "@/components/ui/button";
@@ -9,7 +8,6 @@ const meta: Meta<typeof UsageDialog> = {
   args: {
     open: false,
   },
-  tags: ["autodocs"],
   argTypes: {
     setIsOpen: {
       action: "setIsOpen",
@@ -28,25 +26,25 @@ const meta: Meta<typeof UsageDialog> = {
 
 export default meta;
 
-export const Default = ({ ...args }) => {
-  const [{ open }, updateArgs] = useArgs();
-
-  return (
-    <>
-      <Button
-        onClick={() => {
-          updateArgs({ open: true });
-        }}
-      >
-        Show Usage Dialog
-      </Button>
-      <UsageDialog
-        {...args}
-        open={open as boolean}
-        setIsOpen={(isOpen) => {
-          updateArgs({ open: isOpen });
-        }}
-      />
-    </>
-  );
+type Story = StoryObj<typeof UsageDialog>;
+export const Default: Story = {
+  render: ({ open }) => {
+    return (
+      <>
+        <Button
+          onClick={() => {
+            open = true;
+          }}
+        >
+          Show Usage Dialog
+        </Button>
+        <UsageDialog
+          open={open as boolean}
+          setIsOpen={(isOpen) => {
+            open = isOpen;
+          }}
+        />
+      </>
+    );
+  },
 };

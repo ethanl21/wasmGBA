@@ -1,11 +1,9 @@
-import type { Meta } from "@storybook/react";
-import { useArgs } from "@storybook/preview-api";
+import type { Meta, StoryObj } from "@storybook/react";
 
 import QuickControls from "@/components/wasmgba/QuickControls";
 
 const meta: Meta<typeof QuickControls> = {
   component: QuickControls,
-  tags: ["autodocs"],
   argTypes: {
     onPausedChanged: {
       action: "onPausedChanged",
@@ -36,26 +34,27 @@ const meta: Meta<typeof QuickControls> = {
 
 export default meta;
 
-export const Default = ({ ...args }) => {
-  const [{ paused, volume, muted }, updateArgs] = useArgs();
-
-  return (
-    <div className="fixed bottom-0 left-0 m-5 w-1/3">
-      <QuickControls
-        {...args}
-        paused={paused as boolean}
-        onPausedChanged={(paused) => {
-          updateArgs({ paused });
-        }}
-        volume={volume as number}
-        onVolumeChanged={(volume) => {
-          updateArgs({ volume });
-        }}
-        muted={muted as boolean}
-        onMutedChanged={(muted) => {
-          updateArgs({ muted });
-        }}
-      />
-    </div>
-  );
+type Story = StoryObj<typeof QuickControls>;
+export const Default: Story = {
+  render: ({
+    paused,
+    onPausedChanged,
+    volume,
+    muted,
+    onMutedChanged,
+    onVolumeChanged,
+  }) => {
+    return (
+      <div className="fixed bottom-0 left-0 m-5 w-1/3">
+        <QuickControls
+          paused={paused}
+          onPausedChanged={onPausedChanged}
+          volume={volume}
+          onVolumeChanged={onVolumeChanged}
+          muted={muted}
+          onMutedChanged={onMutedChanged}
+        />
+      </div>
+    );
+  },
 };
