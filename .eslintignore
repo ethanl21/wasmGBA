@@ -1,0 +1,6 @@
+# Storybook
+!.storybook
+
+# shadcn/ui components
+# not linting for now since they are unmodified
+src/components/ui/**

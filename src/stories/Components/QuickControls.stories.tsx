@@ -4,7 +4,6 @@ import QuickControls from "@/components/wasmgba/QuickControls";
 
 const meta: Meta<typeof QuickControls> = {
   component: QuickControls,
-  title: "Components/QuickControls",
   argTypes: {
     onPausedChanged: {
       action: "clicked",
@@ -31,6 +30,13 @@ const meta: Meta<typeof QuickControls> = {
     muted: false,
     volume: 100,
   },
+  decorators: [
+    (Story) => (
+      <div className="fixed bottom-0 left-0 m-5 w-1/3">
+        <Story />
+      </div>
+    ),
+  ],
 };
 
 export default meta;
@@ -46,16 +52,14 @@ export const Default: Story = {
     onVolumeChanged,
   }) => {
     return (
-      <div className="fixed bottom-0 left-0 m-5 w-1/3">
-        <QuickControls
-          paused={paused}
-          onPausedChanged={onPausedChanged}
-          volume={volume}
-          onVolumeChanged={onVolumeChanged}
-          muted={muted}
-          onMutedChanged={onMutedChanged}
-        />
-      </div>
+      <QuickControls
+        paused={paused}
+        onPausedChanged={onPausedChanged}
+        volume={volume}
+        onVolumeChanged={onVolumeChanged}
+        muted={muted}
+        onMutedChanged={onMutedChanged}
+      />
     );
   },
 };

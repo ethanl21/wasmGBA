@@ -4,7 +4,6 @@ import AboutDialog from "@/components/wasmgba/AboutDialog";
 
 const meta: Meta<typeof AboutDialog> = {
   component: AboutDialog,
-  title: "Windows/AboutDialog",
   args: {
     open: true,
     upstreamRepo: "https://example.com",
@@ -25,14 +24,12 @@ type Story = StoryObj<typeof AboutDialog>;
 export const Default: Story = {
   render: ({ open, upstreamRepo, repo, setIsOpen }) => {
     return (
-      <>
-        <AboutDialog
-          open={open}
-          upstreamRepo={upstreamRepo}
-          repo={repo}
-          setIsOpen={setIsOpen}
-        />
-      </>
+      <AboutDialog
+        open={open}
+        upstreamRepo={upstreamRepo}
+        repo={repo}
+        setIsOpen={setIsOpen}
+      />
     );
   },
 };

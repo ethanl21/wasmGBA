@@ -4,7 +4,6 @@ import TopMenuBar from "@/components/wasmgba/TopMenubar";
 
 const meta: Meta<typeof TopMenuBar> = {
   component: TopMenuBar,
-  title: "Components/TopMenuBar",
   argTypes: {
     onOpenAboutDialog: {
       action: "openAboutDialog",
@@ -70,6 +69,13 @@ const meta: Meta<typeof TopMenuBar> = {
     licenses: "https://example.com",
     upstream: "",
   },
+  decorators: [
+    (Story) => (
+      <div className="flex">
+        <Story />
+      </div>
+    ),
+  ],
 };
 
 export default meta;
@@ -94,26 +100,24 @@ export const Default: Story = {
     onOpenUsageDialog,
   }) => {
     return (
-      <div className="flex">
-        <TopMenuBar
-          paused={paused}
-          onPausedChange={onPausedChange}
-          volume={volume}
-          onVolumeChange={onVolumeChange}
-          muted={muted}
-          onMutedChange={onMutedChange}
-          fastForward={fastForward}
-          onFastForwardChange={onFastForwardChange}
-          pixelated={pixelated}
-          onPixelatedChange={onPixelatedChange}
-          onOpenAboutDialog={onOpenAboutDialog}
-          onOpenUsageDialog={onOpenUsageDialog}
-          version=""
-          repo={repo}
-          licenses={licenses}
-          upstream=""
-        />
-      </div>
+      <TopMenuBar
+        paused={paused}
+        onPausedChange={onPausedChange}
+        volume={volume}
+        onVolumeChange={onVolumeChange}
+        muted={muted}
+        onMutedChange={onMutedChange}
+        fastForward={fastForward}
+        onFastForwardChange={onFastForwardChange}
+        pixelated={pixelated}
+        onPixelatedChange={onPixelatedChange}
+        onOpenAboutDialog={onOpenAboutDialog}
+        onOpenUsageDialog={onOpenUsageDialog}
+        version=""
+        repo={repo}
+        licenses={licenses}
+        upstream=""
+      />
     );
   },
 };
