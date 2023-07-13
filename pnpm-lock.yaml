@@ -26,9 +26,6 @@ dependencies:
   '@radix-ui/react-toggle':
     specifier: ^1.0.3
     version: 1.0.3(@types/react-dom@18.2.6)(@types/react@18.2.14)(react-dom@18.2.0)(react@18.2.0)
-  chromatic:
-    specifier: ^6.19.9
-    version: 6.19.9
   class-variance-authority:
     specifier: ^0.6.1
     version: 0.6.1
@@ -97,6 +94,9 @@ devDependencies:
   autoprefixer:
     specifier: ^10.4.14
     version: 10.4.14(postcss@8.4.25)
+  chromatic:
+    specifier: ^6.19.9
+    version: 6.19.9
   eslint:
     specifier: ^8.44.0
     version: 8.44.0
@@ -6025,7 +6025,7 @@ packages:
   /chromatic@6.19.9:
     resolution: {integrity: sha512-UHrPbPoLnJwd063cRSO0U865VhcATykpMiHsAnNFz5EFRsBvM9wefqyS2Z6W8Ti9J7Fjrf4MV4PA+Q5k2lhFfQ==}
     hasBin: true
-    dev: false
+    dev: true
 
   /chrome-trace-event@1.0.3:
     resolution: {integrity: sha512-p3KULyQg4S7NIHixdwbGX+nFHkoBiA4YQmyWtjb8XngSKV124nJmRysgAeujbUVb15vh+RvFUfCPqU7rXk+hZg==}
