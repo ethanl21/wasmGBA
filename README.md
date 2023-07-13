@@ -1,7 +1,7 @@
 # wasmGBA
-![build workflow status](https://img.shields.io/github/actions/workflow/status/ethanl21/wasmgba/deploy.yml)
-![lint workflow status](https://img.shields.io/github/actions/workflow/status/ethanl21/wasmgba/lint.yml?label=lint)
-![badge linking to storybook](https://img.shields.io/badge/Storybook-ff4785?logo=storybook&logoColor=white&labelColor=gray&color=ff4785&link=https%3A%2F%2Fethanl21.github.io%2FwasmGBA%2Fstorybook)
+[![build workflow status](https://img.shields.io/github/actions/workflow/status/ethanl21/wasmgba/deploy.yml)](https://github.com/ethanl21/wasmGBA/actions/workflows/deploy.yml)
+[![lint workflow status](https://img.shields.io/github/actions/workflow/status/ethanl21/wasmgba/lint.yml?label=lint)](https://github.com/ethanl21/wasmGBA/actions/workflows/lint.yml)
+[![badge linking to storybook](https://img.shields.io/badge/Storybook-ff4785?logo=storybook&logoColor=white&labelColor=gray&color=ff4785&link=https%3A%2F%2Fethanl21.github.io%2FwasmGBA%2Fstorybook)](https://ethanl21.github.io/wasmGBA/storybook)
 
 
 (TODO insert screenshot)
