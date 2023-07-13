@@ -11,17 +11,11 @@ const meta: Meta<typeof UsageDialog> = {
   },
   argTypes: {
     setIsOpen: {
-      action: "setIsOpen",
+      action: "clicked",
       table: {
         disable: true,
       },
     },
-    open: {
-      defaultValue: false,
-    },
-  },
-  parameters: {
-    layout: "centered",
   },
 };
 
@@ -29,22 +23,10 @@ export default meta;
 
 type Story = StoryObj<typeof UsageDialog>;
 export const Default: Story = {
-  render: ({ open }) => {
+  render: ({ open, setIsOpen }) => {
     return (
       <>
-        <Button
-          onClick={() => {
-            open = true;
-          }}
-        >
-          Show Usage Dialog
-        </Button>
-        <UsageDialog
-          open={open as boolean}
-          setIsOpen={(isOpen) => {
-            open = isOpen;
-          }}
-        />
+        <UsageDialog open={open} setIsOpen={setIsOpen} />
       </>
     );
   },

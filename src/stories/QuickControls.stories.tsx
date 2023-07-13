@@ -7,19 +7,19 @@ const meta: Meta<typeof QuickControls> = {
   title: "Components/QuickControls",
   argTypes: {
     onPausedChanged: {
-      action: "onPausedChanged",
+      action: "clicked",
       table: {
         disable: true,
       },
     },
     onMutedChanged: {
-      action: "onMutedChanged",
+      action: "clicked",
       table: {
         disable: true,
       },
     },
     onVolumeChanged: {
-      action: "onVolumeChanged",
+      action: "clicked",
       table: {
         disable: true,
       },

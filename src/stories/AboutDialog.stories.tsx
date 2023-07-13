@@ -18,9 +18,6 @@ const meta: Meta<typeof AboutDialog> = {
       },
     },
   },
-  parameters: {
-    layout: "centered",
-  },
 };
 
 export default meta;
@@ -28,14 +25,14 @@ type Story = StoryObj<typeof AboutDialog>;
 export const Default: Story = {
   render: ({ open, upstreamRepo, repo, setIsOpen }) => {
     return (
-      <div>
+      <>
         <AboutDialog
           open={open}
           upstreamRepo={upstreamRepo}
           repo={repo}
           setIsOpen={setIsOpen}
         />
-      </div>
+      </>
     );
   },
 };
