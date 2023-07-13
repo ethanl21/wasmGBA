@@ -55,8 +55,12 @@ type Story = StoryObj<typeof TopMenuBar>;
 
 export const Default: Story = {
   args: {
-    onOpenAboutDialog: () => {alert("The AboutDialog would be shown here.")},
-    onOpenUsageDialog: () => {alert("The UsageDialog would be shown here.")},
+    onOpenAboutDialog: () => {
+      alert("The AboutDialog would be shown here.");
+    },
+    onOpenUsageDialog: () => {
+      alert("The UsageDialog would be shown here.");
+    },
     version: WASMGBA_VERSION,
     repo: "https://example.com",
     licenses: "https://example.com",

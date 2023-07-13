@@ -4,19 +4,13 @@ import App from "@/App";
 
 const meta: Meta<typeof App> = {
   component: App,
-  argTypes: {
-  }
+  argTypes: {},
 };
 
 export default meta;
 type Story = StoryObj<typeof App>;
 
 export const Default: Story = {
-  args: {
-  },
-  decorators: [
-    (Story) => (
-        <Story />
-    ),
-  ],
+  args: {},
+  decorators: [(Story) => <Story />],
 };

@@ -13,7 +13,8 @@ export const Default: Story = {
   args: {
     open: false,
     //setIsOpen: () => {},
-    upstreamRepo: "https://github.com/GIT_AUTHOR/GIT_REPO/tree/0123456789012345678901234567890123456789",
+    upstreamRepo:
+      "https://github.com/GIT_AUTHOR/GIT_REPO/tree/0123456789012345678901234567890123456789",
     repo: "https://example.com",
   },
   decorators: [

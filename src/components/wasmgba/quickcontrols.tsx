@@ -16,7 +16,10 @@ export default function QuickControls(props: QuickControlsProps) {
   return (
     <>
       <Card className="flex flex-row items-center space-x-2 px-2">
-        <Toggle aria-label="Pause" onClick={() => props.onPausedChanged(props.paused)}>
+        <Toggle
+          aria-label="Pause"
+          onClick={() => props.onPausedChanged(props.paused)}
+        >
           {props.paused ? <Play /> : <Pause />}
         </Toggle>
         <Toggle aria-label="Fast Forward">
