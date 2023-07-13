@@ -1,5 +1,5 @@
 # wasmGBA
-[![build workflow status](https://img.shields.io/github/actions/workflow/status/ethanl21/wasmgba/deploy.yml)](https://github.com/ethanl21/wasmGBA/actions/workflows/deploy.yml)
+[![build workflow status](https://img.shields.io/github/actions/workflow/status/ethanl21/wasmgba/deploy.yml)](https://github.com/ethanl21/wasmGBA/actions/workflows/deploy-pages.yml)
 [![lint workflow status](https://img.shields.io/github/actions/workflow/status/ethanl21/wasmgba/lint.yml?label=lint)](https://github.com/ethanl21/wasmGBA/actions/workflows/lint.yml)
 [![badge linking to storybook](https://img.shields.io/badge/Storybook-ff4785?logo=storybook&logoColor=white&labelColor=gray&color=ff4785)](https://main--64af9d812dc042a1d4205e5f.chromatic.com)
 
