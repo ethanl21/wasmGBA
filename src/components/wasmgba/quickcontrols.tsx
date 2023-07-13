@@ -1,4 +1,3 @@
-import { useState } from "react";
 import { Pause, Play, FastForward, Volume2, VolumeX } from "lucide-react";
 import { Card } from "@/components/ui/card";
 import { Toggle } from "@/components/ui/toggle";
@@ -10,7 +9,7 @@ interface QuickControlsProps {
   muted: boolean;
   onMutedChanged: (muted: boolean) => void;
   volume: number;
-  onVolumeChanged: (volume: number) => void;
+  onVolumeChanged: (volume: number[]) => void;
 }
 export default function QuickControls(props: QuickControlsProps) {
   return (
@@ -35,7 +34,7 @@ export default function QuickControls(props: QuickControlsProps) {
         <Slider
           aria-label="Volume"
           value={[props.volume]}
-          onValueChange={(e) => props.onVolumeChanged(e[0])}
+          onValueChange={(e) => props.onVolumeChanged(e)}
           disabled={props.muted}
         />
         <p className="text-center content-center">{props.volume}%</p>

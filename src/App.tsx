@@ -1,9 +1,9 @@
 import { useState } from "react";
 import "./App.css";
-import TopMenuBar from "./components/wasmgba/topmenubar";
-import QuickControls from "./components/wasmgba/quickcontrols";
-import AboutDialog from "./components/wasmgba/aboutdialog";
-import UsageDialog from "./components/wasmgba/usagedialog";
+import TopMenuBar from "./components/wasmgba/TopMenubar";
+import QuickControls from "./components/wasmgba/QuickControls";
+import AboutDialog from "./components/wasmgba/AboutDialog";
+import UsageDialog from "./components/wasmgba/UsageDialog";
 
 function App() {
   const [aboutDialogIsOpen, setAboutDialogIsOpen] = useState(false);
@@ -11,7 +11,9 @@ function App() {
 
   const [paused, setPaused] = useState(false);
   const [muted, setMuted] = useState(false);
-  const [volume, setVolume] = useState(100);
+  const [volume, setVolume] = useState([100]);
+  const [fastForward, setFastForward] = useState(false);
+  const [pixelated, setPixelated] = useState(false);
 
   return (
     <>
@@ -30,6 +32,19 @@ function App() {
             onOpenUsageDialog={() => setUsageDialogIsOpen(true)}
             repo={WASMGBA_REPO_URL}
             licenses={WASMGBA_OSS_LICENSES_URL}
+            volume={volume[0]}
+            onVolumeChange={setVolume}
+            muted={muted}
+            onMutedChange={setMuted}
+            paused={paused}
+            onPausedChange={setPaused}
+            fastForward={fastForward}
+            onFastForwardChange={setFastForward}
+            pixelated={pixelated}
+            onPixelatedChange={setPixelated}
+            upstream={MGBA_UPSTREAM_REPO_URL}
+            version={WASMGBA_VERSION}
+
           />
         </header>
 
@@ -40,7 +55,7 @@ function App() {
               onPausedChanged={setPaused}
               muted={muted}
               onMutedChanged={setMuted}
-              volume={volume}
+              volume={volume[0]}
               onVolumeChanged={setVolume}
             />
           </div>

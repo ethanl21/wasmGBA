@@ -1,27 +1,62 @@
-import type { Meta, StoryObj } from "@storybook/react";
+import { type Meta } from "@storybook/react";
+import { useArgs } from "@storybook/preview-api";
 
-import AboutDialog from "@/components/wasmgba/aboutdialog";
+import AboutDialog from "@/components/wasmgba/AboutDialog";
+import { Button } from "@/components/ui/button";
 
 const meta: Meta<typeof AboutDialog> = {
   component: AboutDialog,
+  args: {
+    open: false,
+    upstreamRepo: "https://example.com",
+    repo: "https://example.com",
+  },
+  tags: ["autodocs"],
+  argTypes: {
+    setIsOpen: {
+      action: "setIsOpen",
+      table: {
+        disable: true,
+      },
+    },
+    open: {
+      type: "boolean",
+    },
+    upstreamRepo: {
+      type: "string",
+    },
+    repo: {
+      type: "string",
+    },
+  },
+  parameters: {
+    layout: "centered",
+  },
 };
 
 export default meta;
-type Story = StoryObj<typeof AboutDialog>;
 
-export const Default: Story = {
-  args: {
-    open: false,
-    //setIsOpen: () => {},
-    upstreamRepo:
-      "https://github.com/GIT_AUTHOR/GIT_REPO/tree/0123456789012345678901234567890123456789",
-    repo: "https://example.com",
-  },
-  decorators: [
-    (Story) => (
-      <div className="">
-        <Story />
-      </div>
-    ),
-  ],
+export const Default = ({ ...args }) => {
+  const [{ open, upstreamRepo, repo }, updateArgs] = useArgs();
+
+  return (
+    <>
+      <Button
+        onClick={() => {
+          updateArgs({ open: true });
+        }}
+      >
+        Show About Dialog
+      </Button>
+      <AboutDialog
+        {...args}
+        open={open as boolean}
+        setIsOpen={(isOpen) => {
+          updateArgs({ open: isOpen });
+        }}
+        upstreamRepo={upstreamRepo as string}
+        repo={repo as string}
+      />
+    </>
+  );
 };
