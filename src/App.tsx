@@ -5,10 +5,12 @@ import QuickControls from "@/components/wasmgba/QuickControls";
 import AboutDialog from "@/components/wasmgba/AboutDialog";
 import UsageDialog from "@/components/wasmgba/UsageDialog";
 import { useTheme } from "@/lib/ThemeProviderUseTheme";
+import ManageCheatDialog from "./components/wasmgba/ManageCheatsDialog";
 
 function App() {
   const [aboutDialogIsOpen, setAboutDialogIsOpen] = useState(false);
   const [usageDialogIsOpen, setUsageDialogIsOpen] = useState(false);
+  const [cheatsDialogIsOpen, setCheatsDialogIsOpen] = useState(false);
 
   const [paused, setPaused] = useState(false);
   const [muted, setMuted] = useState(false);
@@ -54,11 +56,17 @@ function App() {
       />
       <UsageDialog open={usageDialogIsOpen} setIsOpen={setUsageDialogIsOpen} />
 
+      <ManageCheatDialog
+        open={cheatsDialogIsOpen}
+        setIsOpen={setCheatsDialogIsOpen}
+      />
+
       <div className="container">
         <header className="fixed top-0 left-0 m-5">
           <TopMenuBar
             onOpenAboutDialog={() => setAboutDialogIsOpen(true)}
             onOpenUsageDialog={() => setUsageDialogIsOpen(true)}
+            onOpenCheatsDialog={() => setCheatsDialogIsOpen(true)}
             repo={WASMGBA_REPO_URL}
             licenses={WASMGBA_OSS_LICENSES_URL}
             volume={volume[0]}
@@ -71,8 +79,6 @@ function App() {
             onFastForwardChange={setFastForward}
             pixelated={pixelated}
             onPixelatedChange={setPixelated}
-            upstream={MGBA_UPSTREAM_REPO_URL}
-            version={WASMGBA_VERSION}
           />
         </header>
 
