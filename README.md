@@ -44,7 +44,7 @@ _No ROMs are provided with wasmGBA. Users must supply their own backups of their
 
 ## Usage
 
-A demo tracking the latest tagged commit is hosted via [GitHub Pages](https://ethanl21.github.io/wasmGBA/).
+A demo tracking the `main` branch is hosted via [GitHub Pages](https://ethanl21.github.io/wasmGBA/).
 
 ### Building
 

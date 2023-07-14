@@ -1,24 +1,22 @@
 name: Deploy to Storybook to Chromatic
 
-on:
-    push:
-      tags:
-        - 'v*'
+on: [push]
+
 
 jobs:
   chromatic-deployment:
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v1
+      - uses: actions/checkout@v3
       - name: Set up pnpm
         uses: pnpm/action-setup@v2
         with:
-          version: '^8.6.5'
+          version: "^8.6.5"
       - name: Set up Node
         uses: actions/setup-node@v3
         with:
           node-version: 18
-          cache: 'pnpm'
+          cache: "pnpm"
       - name: Install dependencies
         run: pnpm i
       - name: Publish to Chromatic
