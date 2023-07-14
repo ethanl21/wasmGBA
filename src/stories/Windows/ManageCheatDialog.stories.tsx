@@ -1,30 +1,33 @@
 import type { Meta, StoryObj } from "@storybook/react";
 import { v4 as uuidv4 } from "uuid";
 
-import CheatAccordion from "@/components/wasmgba/CheatAccordion";
+import ManageCheatDialog from "@/components/wasmgba/ManageCheatDialog";
 import { GameCheat } from "@/lib/GameCheat";
 
-const meta: Meta<typeof CheatAccordion> = {
-  component: CheatAccordion,
+const meta: Meta<typeof ManageCheatDialog> = {
+  component: ManageCheatDialog,
+  args: {
+    open: true,
+  },
   argTypes: {
-    onCheatEnabledChanged: {
-      action: "onCheatEnabledChanged",
-      table: {
-        disable: true,
-      },
-    },
-    onSelectedCheatChanged: {
-      action: "onSelectedCheatChanged",
+    setIsOpen: {
+      action: "clicked",
       table: {
         disable: true,
       },
     },
   },
+  decorators: [
+    (Story) => (
+      <div className="flex">
+        <Story />
+      </div>
+    ),
+  ],
 };
 
 export default meta;
-
-type Story = StoryObj<typeof CheatAccordion>;
+type Story = StoryObj<typeof ManageCheatDialog>;
 const debug_ids = [uuidv4(), uuidv4()];
 const debug_cheats: GameCheat[] = [
   {
@@ -46,11 +49,11 @@ const debug_cheats: GameCheat[] = [
 export const Default: Story = {
   args: {
     cheats: debug_cheats,
-    selectedCheat: debug_ids[0],
+    activeCheatId: debug_ids[0],
   },
 
   argTypes: {
-    selectedCheat: {
+    activeCheatId: {
       options: debug_ids,
       control: {
         type: "select",
@@ -61,17 +64,14 @@ export const Default: Story = {
       },
     },
   },
-
   render: ({ ...args }) => {
     return (
-      <>
-        <CheatAccordion
-          cheats={args.cheats}
-          selectedCheat={args.selectedCheat}
-          onSelectedCheatChanged={args.onSelectedCheatChanged}
-          onCheatEnabledChanged={args.onCheatEnabledChanged}
-        />
-      </>
+      <ManageCheatDialog
+        open={args.open}
+        setIsOpen={args.setIsOpen}
+        cheats={args.cheats}
+        activeCheatId={args.activeCheatId}
+      />
     );
   },
 };

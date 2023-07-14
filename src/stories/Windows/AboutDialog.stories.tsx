@@ -22,6 +22,7 @@ const meta: Meta<typeof AboutDialog> = {
 export default meta;
 type Story = StoryObj<typeof AboutDialog>;
 export const Default: Story = {
+
   render: ({ open, upstreamRepo, repo, setIsOpen }) => {
     return (
       <AboutDialog

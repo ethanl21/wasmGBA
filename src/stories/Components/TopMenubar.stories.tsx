@@ -47,16 +47,6 @@ const meta: Meta<typeof TopMenuBar> = {
         disable: true,
       },
     },
-    version: {
-      table: {
-        disable: true,
-      },
-    },
-    upstream: {
-      table: {
-        disable: true,
-      },
-    },
   },
   args: {
     paused: false,
@@ -64,10 +54,8 @@ const meta: Meta<typeof TopMenuBar> = {
     muted: false,
     fastForward: false,
     pixelated: false,
-    version: "",
     repo: "https://example.com",
     licenses: "https://example.com",
-    upstream: "",
   },
   decorators: [
     (Story) => (
@@ -113,10 +101,8 @@ export const Default: Story = {
         onPixelatedChange={onPixelatedChange}
         onOpenAboutDialog={onOpenAboutDialog}
         onOpenUsageDialog={onOpenUsageDialog}
-        version=""
         repo={repo}
         licenses={licenses}
-        upstream=""
       />
     );
   },
