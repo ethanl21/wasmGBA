@@ -28,6 +28,7 @@ _No ROMs are provided with wasmGBA. Users must supply their own backups of their
   - [ ] Add and remove cheats from active .cheats file
   - [ ] Activate and Deactivate cheats from active .cheats file
 - [ ] Gameplay
+  - [ ] Intro animation
   - [ ] Pause and unpause
   - [ ] Fast-forward
   - [ ] Audio
@@ -43,7 +44,7 @@ _No ROMs are provided with wasmGBA. Users must supply their own backups of their
 
 ## Usage
 
-A demo tracking this repository's `main` branch is hosted via [GitHub Pages](https://ethanl21.github.io/wasmGBA/).
+A demo tracking the latest tagged commit is hosted via [GitHub Pages](https://ethanl21.github.io/wasmGBA/).
 
 ### Building
 
@@ -75,3 +76,6 @@ wasmGBA is distributed under the MIT License. Additionally, the following open s
 | tailwindcss | MIT | https://github.com/tailwindlabs/tailwindcss |
 | shadcn/ui | MIT | https://github.com/shadcn/ui |
 | vite | MIT | https://github.com/vitejs/vite.git |
+
+#### Other
+- [Game Boy Advance Intro - After Effects Template Type Beat](https://www.youtube.com/watch?v=Hjax6bX2x2Q) by Cyranek, used for the intro animation [(archive.org 📸)](https://web.archive.org/web/20230418164951/https://www.youtube.com/watch?v=Hjax6bX2x2Q)
