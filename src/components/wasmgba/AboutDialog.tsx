@@ -1,4 +1,4 @@
-import { Button } from "@/components/ui/button";
+import { buttonVariants } from "@/components/ui/button";
 import {
   Dialog,
   DialogContent,
@@ -18,7 +18,7 @@ export default function AboutDialog({
   upstreamRepo = "",
   repo = "",
   open = false,
-  setIsOpen = () => {}
+  setIsOpen = () => {},
 }: AboutDialogProps) {
   let upstream = "";
   let commit = "";
@@ -58,13 +58,16 @@ export default function AboutDialog({
             </p>
           </div>
           <div className="flex justify-end">
-            <Button
-              className="space-x-2"
-              onClick={() => window.open(repo, "_blank")}
+            <a
+              href={repo}
+              target="_blank"
+              className={buttonVariants({ variant: "default" })}
             >
-              <Github />
-              Source Code
-            </Button>
+              <div className="flex flex-row space-x-3 justify-center items-center">
+                <Github />
+                <span>Source Code</span>
+              </div>
+            </a>
           </div>
         </DialogContent>
       </Dialog>
