@@ -1,7 +1,7 @@
 import type { Meta, StoryObj } from "@storybook/react";
 import { v4 as uuidv4 } from "uuid";
 
-import ManageCheatDialog from "@/components/wasmgba/ManageCheatDialog";
+import ManageCheatDialog from "@/components/wasmgba/ManageCheatsDialog";
 import { GameCheat } from "@/lib/GameCheat";
 
 const meta: Meta<typeof ManageCheatDialog> = {

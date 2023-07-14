@@ -57,6 +57,7 @@ function SaveStateMenu(props: SaveStateMenuProps) {
 interface TopMenuBarProps {
   onOpenAboutDialog?: () => void;
   onOpenUsageDialog?: () => void;
+  onOpenCheatsDialog?: () => void;
   repo?: string;
   licenses?: string;
   volume?: number;
@@ -73,6 +74,7 @@ interface TopMenuBarProps {
 export default function TopMenuBar({
   onOpenAboutDialog = () => {},
   onOpenUsageDialog = () => {},
+  onOpenCheatsDialog = () => {},
   repo = "",
   licenses = "",
   volume = 100,
@@ -97,7 +99,7 @@ export default function TopMenuBar({
             </MenubarItem>
             <MenubarItem>Import Save</MenubarItem>
             <MenubarItem>Import Cheats</MenubarItem>
-            <MenubarItem className="justify-between">
+            <MenubarItem className="justify-between" onClick={onOpenCheatsDialog}>
               Manage Cheats
               <AppWindow width="16" height="16" />
             </MenubarItem>

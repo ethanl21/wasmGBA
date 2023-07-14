@@ -21,7 +21,7 @@ interface ManageCheatDialogProps {
   cheats?: GameCheat[];
   activeCheatId?: string;
 }
-export default function ManageCheatDialog({
+export default function ManageCheatsDialog({
   open = false,
   setIsOpen = () => {},
   cheats = [],

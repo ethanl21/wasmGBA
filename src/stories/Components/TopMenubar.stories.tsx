@@ -17,6 +17,12 @@ const meta: Meta<typeof TopMenuBar> = {
         disable: true,
       },
     },
+    onOpenCheatsDialog: {
+      action: "openCheatsDialog",
+      table: {
+        disable: true,
+      },
+    },
     onFastForwardChange: {
       action: "fastForwardChange",
       table: {
@@ -78,7 +84,6 @@ export const Default: Story = {
     pixelated,
     repo,
     licenses,
-    //upstream,
     onPausedChange,
     onVolumeChange,
     onMutedChange,
@@ -86,6 +91,7 @@ export const Default: Story = {
     onPixelatedChange,
     onOpenAboutDialog,
     onOpenUsageDialog,
+    onOpenCheatsDialog,
   }) => {
     return (
       <TopMenuBar
@@ -101,6 +107,7 @@ export const Default: Story = {
         onPixelatedChange={onPixelatedChange}
         onOpenAboutDialog={onOpenAboutDialog}
         onOpenUsageDialog={onOpenUsageDialog}
+        onOpenCheatsDialog={onOpenCheatsDialog}
         repo={repo}
         licenses={licenses}
       />
