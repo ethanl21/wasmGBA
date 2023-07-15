@@ -58,6 +58,7 @@ interface TopMenuBarProps {
   onOpenAboutDialog?: () => void;
   onOpenUsageDialog?: () => void;
   onOpenCheatsDialog?: () => void;
+  onImportROM?: () => void;
   repo?: string;
   licenses?: string;
   volume?: number;
@@ -75,6 +76,7 @@ export default function TopMenuBar({
   onOpenAboutDialog = () => {},
   onOpenUsageDialog = () => {},
   onOpenCheatsDialog = () => {},
+  onImportROM = () => {},
   repo = "",
   licenses = "",
   volume = 100,
@@ -94,7 +96,7 @@ export default function TopMenuBar({
         <MenubarMenu>
           <MenubarTrigger>File</MenubarTrigger>
           <MenubarContent>
-            <MenubarItem>
+            <MenubarItem onClick={onImportROM}>
               Import ROM <MenubarShortcut>⌘O</MenubarShortcut>
             </MenubarItem>
             <MenubarItem>Import Save</MenubarItem>

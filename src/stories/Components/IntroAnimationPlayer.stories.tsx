@@ -1,8 +1,5 @@
 import type { Meta, StoryObj } from "@storybook/react";
-
 import IntroAnimationPlayer from "@/components/wasmgba/IntroAnimationPlayer";
-import { useRef, useState } from "react";
-import { Button } from "@/components/ui/button";
 
 const meta: Meta<typeof IntroAnimationPlayer> = {
   component: IntroAnimationPlayer,
@@ -13,15 +10,32 @@ const meta: Meta<typeof IntroAnimationPlayer> = {
         disable: true,
       },
     },
+    volumePercentage: {
+      control: {
+        type: "range",
+        min: 0,
+        max: 1,
+        step: 0.01,
+      },
+    },
   },
   args: {
     onVideoEnded: () => {},
+    volumePercentage: 1,
+    isPlaying: false,
+    muted: navigator.userAgent.includes("Safari"),
   },
   decorators: [
     (Story) => (
-      <div className="flex flex-col justify-center items-center space-y-2">
+      <>
+      <div className="flex justify-center items-center flex-col">
+        <span className="flex border-2">
         <Story />
+        </span>
+      
+      {navigator.userAgent.includes("Safari") && <p>videos with audio will not autoplay on Safari</p>}
       </div>
+      </>
     ),
   ],
 };
@@ -31,18 +45,14 @@ export default meta;
 type Story = StoryObj<typeof IntroAnimationPlayer>;
 export const Default: Story = {
   render: ({ ...args }) => {
-    const playerRef = useRef<HTMLVideoElement | null>(null);
-
     return (
       <>
-      <span onClick={() => playerRef.current?.play()}
-      className="border-2">
-        <IntroAnimationPlayer
-          ref={playerRef}
-          onVideoEnded={args.onVideoEnded}
-        />
-        </span>
-        {/* <Button onClick={() => playerRef.current?.play()}>Play</Button> */}
+          <IntroAnimationPlayer
+            isPlaying={args.isPlaying}
+            onVideoEnded={args.onVideoEnded}
+            volumePercentage={args.volumePercentage}
+            muted={args.muted}
+          />
       </>
     );
   },

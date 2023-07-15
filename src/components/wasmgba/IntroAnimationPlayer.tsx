@@ -1,37 +1,47 @@
-import { forwardRef, useState } from "react";
-import BiosAnimation from "../../assets/bios_animation.mp4";
+import { forwardRef, useRef } from "react";
+import biosAnimation from "/bios_animation.mp4";
 
 interface IntroAnimationPlayerProps {
   onVideoEnded?: () => void;
+  volumePercentage?: number;
+  isPlaying?: boolean;
+  muted?: boolean;
 }
-const IntroAnimationPlayerPlayer = forwardRef(function _introAnimationPlayer(
-  { onVideoEnded = () => {} }: IntroAnimationPlayerProps,
-  ref: React.Ref<HTMLVideoElement>
+const IntroAnimationPlayer = forwardRef(function _introAnimationPlayer(
+  {
+    onVideoEnded = () => {},
+    volumePercentage = 1,
+    isPlaying = false,
+    muted = false,
+  }: IntroAnimationPlayerProps,
+  parentRef
 ) {
-  const [isVideoEnded, setIsVideoEnded] = useState(false);
-  const handleVideoEnded = () => {
-    setIsVideoEnded(true);
-    onVideoEnded();
-  };
+  const localRef = useRef<HTMLVideoElement | null>(null);
+
+  if (localRef.current) {
+    localRef.current.volume = volumePercentage;
+    if (isPlaying) {
+      void localRef.current.play();
+    } else {
+      localRef.current.pause();
+    }
+  }
 
   return (
     <>
       <video
-        className={
-          isVideoEnded
-            ? "transition-opacity ease-out duration-700 opacity-0"
-            : "transition-opacity ease-in duration-100 opacity-100"
-        }
-        preload="auto"
-        ref={ref}
-        onEnded={handleVideoEnded}
-        onPlay={() => setIsVideoEnded(false)}
-      >
-        <source src={BiosAnimation} type="video/mp4" />
-        Your browser does not support HTML5 video.
-      </video>
+        ref={(ref) => {
+          if (typeof parentRef === "function") parentRef(ref);
+          else if (parentRef !== null) parentRef.current = ref;
+          if (localRef !== null) localRef.current = ref;
+        }}
+        src={biosAnimation}
+        onEnded={onVideoEnded}
+        playsInline
+        muted={muted}
+      />
     </>
   );
 });
 
-export default IntroAnimationPlayerPlayer;
+export default IntroAnimationPlayer;

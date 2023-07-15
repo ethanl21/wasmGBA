@@ -38,6 +38,7 @@ export default function QuickControls({
         >
           {muted ? <VolumeX /> : <Volume2 />}
         </Toggle>
+        <div className="flex w-52">
         <Slider
           aria-label="Volume"
           value={[volume]}
@@ -45,6 +46,7 @@ export default function QuickControls({
           disabled={muted}
         />
         <p className="text-center content-center">{volume}%</p>
+        </div>
       </Card>
     </>
   );
