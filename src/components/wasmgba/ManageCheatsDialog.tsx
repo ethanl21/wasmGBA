@@ -88,7 +88,7 @@ export default function ManageCheatsDialog({
                 <Textarea
                   id="cheatInput"
                   placeholder="Enter your cheat code here."
-                  className="resize-none h-48"
+                  className="h-48 resize-none"
                 />
               </div>
               <div>

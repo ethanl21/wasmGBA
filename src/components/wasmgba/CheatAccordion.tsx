@@ -31,7 +31,7 @@ export default function CheatAccordion({
         {cheats.map((cheat) => (
           <div className="flex flex-row">
             <Checkbox
-              className="self-start m-5"
+              className="m-5 self-start"
               checked={cheat.enabled}
               onCheckedChange={(isChecked) =>
                 onCheatEnabledChanged(cheat.id, isChecked as boolean)
@@ -41,7 +41,7 @@ export default function CheatAccordion({
               <AccordionTrigger>
                 <div className="flex flex-row space-x-2">
                   <span>{cheat.name}</span>
-                  <p className="text-sm font-medium leading-none hover:">
+                  <p className="hover: text-sm leading-none font-medium">
                     {{
                       gameshark: <span>GameShark</span>,
                       codebreaker: <span>CodeBreaker</span>,
@@ -52,7 +52,7 @@ export default function CheatAccordion({
               </AccordionTrigger>
               <AccordionContent>
                 <div className="flex">
-                  <p className="shrink rounded bg-muted px-[0.3rem] py-[0.2rem] font-mono text-sm font-semibold">
+                  <p className="bg-muted shrink rounded px-[0.3rem] py-[0.2rem] font-mono text-sm font-semibold">
                     {cheat.code}
                   </p>
                 </div>

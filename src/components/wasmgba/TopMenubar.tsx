@@ -48,7 +48,7 @@ function SaveStateMenu(props: SaveStateMenuProps) {
       <MenubarItem className="justify-between">
         Slot {i}
         {icon && icon}
-      </MenubarItem>
+      </MenubarItem>,
     );
   }
 
@@ -102,7 +102,10 @@ export default function TopMenuBar({
             </MenubarItem>
             <MenubarItem>Import Save</MenubarItem>
             <MenubarItem>Import Cheats</MenubarItem>
-            <MenubarItem className="justify-between" onClick={onOpenCheatsDialog}>
+            <MenubarItem
+              className="justify-between"
+              onClick={onOpenCheatsDialog}
+            >
               Manage Cheats
               <AppWindow width="16" height="16" />
             </MenubarItem>

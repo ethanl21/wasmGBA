@@ -81,17 +81,17 @@ export default function UsageDialog({
               <li>Have fun playing your game!</li>
             </ul>
           </div>
-          <h4 className="text-lg font-semibold leading-none tracking-tight">
+          <h4 className="text-lg leading-none font-semibold tracking-tight">
             Controls
           </h4>
           <div>
-            <Table className="border-slate-200 border-2">
+            <Table className="border-2 border-slate-200">
               <TableHeader>
                 <TableRow>
-                  <TableHead className="border-slate-200 border-r">
+                  <TableHead className="border-r border-slate-200">
                     GBA Button
                   </TableHead>
-                  <TableHead className="border-slate-200 border-r">
+                  <TableHead className="border-r border-slate-200">
                     Keyboard Input
                   </TableHead>
                 </TableRow>
@@ -99,10 +99,10 @@ export default function UsageDialog({
               <TableBody>
                 {keybinds.map((keybind) => (
                   <TableRow key={`gba-button-${keybind.gba}`}>
-                    <td className="px-4 border-slate-200 border-r">
+                    <td className="border-r border-slate-200 px-4">
                       {keybind.gba}
                     </td>
-                    <td className="px-4 border-slate-200 border-l">
+                    <td className="border-l border-slate-200 px-4">
                       {keybind.keyboard}
                     </td>
                   </TableRow>

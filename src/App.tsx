@@ -3,14 +3,16 @@ import TopMenuBar from "@/components/wasmgba/TopMenubar";
 import QuickControls from "@/components/wasmgba/QuickControls";
 import AboutDialog from "@/components/wasmgba/AboutDialog";
 import UsageDialog from "@/components/wasmgba/UsageDialog";
-import IntroAnimationPlayer from "@/components/wasmgba/IntroAnimationPlayer";
 import ManageCheatDialog from "@/components/wasmgba/ManageCheatsDialog";
+import VideoPlayer, {
+  VideoPlayerHandle,
+} from "@/components/wasmgba/VideoPlayer";
+import introVideo from "/bios_animation.mp4";
 
 function App() {
   const [aboutDialogIsOpen, setAboutDialogIsOpen] = useState(false);
   const [usageDialogIsOpen, setUsageDialogIsOpen] = useState(false);
   const [cheatsDialogIsOpen, setCheatsDialogIsOpen] = useState(false);
-  const [introAnimationIsPlaying, setIntroAnimationIsPlaying] = useState(false);
   const [introVideoIsVisible, setIntroVideoIsVisible] = useState(false);
 
   const [paused, setPaused] = useState(false);
@@ -19,15 +21,14 @@ function App() {
   const [fastForward, setFastForward] = useState(false);
   const [pixelated, setPixelated] = useState(false);
 
-  const introAnimationPlayerRef = useRef<HTMLVideoElement | null>(null);
+  const videoPlayerRef = useRef<VideoPlayerHandle>(null);
 
   // event handlers
   const onImportROM = () => {
-    setIntroAnimationIsPlaying(true);
+    videoPlayerRef.current?.play();
     setIntroVideoIsVisible(true);
   };
   const onIntroAnimationFinished = () => {
-    setIntroAnimationIsPlaying(false);
     setIntroVideoIsVisible(false);
   };
 
@@ -46,7 +47,7 @@ function App() {
         setIsOpen={setCheatsDialogIsOpen}
       />
       <main className="flex h-screen p-2">
-        <div className="flex flex-col justify-between flex-1 space-y-2">
+        <div className="flex flex-1 flex-col justify-between space-y-2">
           <div className="flex">
             <TopMenuBar
               onOpenAboutDialog={() => setAboutDialogIsOpen(true)}
@@ -70,14 +71,14 @@ function App() {
 
           {/* this just hides the intro for now, todo crossfade between intro and mGBA frame */}
           <div className="flex justify-center">
-            <div className="border-8 rounded-sm">
+            <div className="rounded-sm border-8">
               <div className={introVideoIsVisible ? "" : "hidden"}>
-                <IntroAnimationPlayer
-                  isPlaying={introAnimationIsPlaying}
-                  ref={introAnimationPlayerRef}
-                  onVideoEnded={onIntroAnimationFinished}
-                  volumePercentage={volume[0] / 100}
+                <VideoPlayer
+                  src={introVideo}
+                  ref={videoPlayerRef}
+                  onEnded={onIntroAnimationFinished}
                   muted={muted}
+                  controls={false}
                 />
               </div>
               <div className={introVideoIsVisible ? "hidden" : "p-10"}>

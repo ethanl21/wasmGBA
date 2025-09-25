@@ -63,7 +63,7 @@ export default function AboutDialog({
               target="_blank"
               className={buttonVariants({ variant: "default" })}
             >
-              <div className="flex flex-row space-x-3 justify-center items-center">
+              <div className="flex flex-row items-center justify-center space-x-3">
                 <Github />
                 <span>Source Code</span>
               </div>

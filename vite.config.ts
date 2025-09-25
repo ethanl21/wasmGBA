@@ -15,10 +15,10 @@ export default defineConfig({
     WASMGBA_VERSION: JSON.stringify(process.env.npm_package_version),
     WASMGBA_REPO_URL: JSON.stringify(process.env.npm_package_repository_url),
     WASMGBA_OSS_LICENSES_URL: JSON.stringify(
-      `${process.env.npm_package_repository_url}#Copyright`
+      `${process.env.npm_package_repository_url}#Copyright`,
     ),
     MGBA_UPSTREAM_REPO_URL: JSON.stringify(
-      "https://github.com/thenick775/mgba/tree/c3d5ca5d5ffd47b2866fe6e40a7d551d845e512a"
+      "https://github.com/thenick775/mgba/tree/c3d5ca5d5ffd47b2866fe6e40a7d551d845e512a",
     ),
   },
 });
