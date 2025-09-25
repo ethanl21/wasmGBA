@@ -20,6 +20,7 @@ import {
   Scale,
   AppWindow,
 } from "lucide-react";
+import { ModeToggle } from "@/components/ui/mode-toggle";
 
 type SaveStateMenuProps = {
   saveStatesCount: number;
@@ -220,6 +221,7 @@ export default function TopMenuBar({
           </MenubarContent>
         </MenubarMenu>
       </Menubar>
+      <ModeToggle />
     </>
   );
 }

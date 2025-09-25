@@ -1,8 +1,8 @@
 import React from "react";
 import ReactDOM from "react-dom/client";
 import App from "./App.tsx";
-import "./index.css";
-import { ThemeProvider } from "./lib/ThemeProvider.tsx";
+import "./index.tailwind.css";
+import { ThemeProvider } from "@/components/ui/theme-provider.tsx";
 
 document.title = `wasmGBA v${WASMGBA_VERSION}-${import.meta.env.MODE}`;
 

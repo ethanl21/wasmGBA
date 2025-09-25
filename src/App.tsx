@@ -1,10 +1,9 @@
-import { useEffect, useRef, useState } from "react";
+import { useRef, useState } from "react";
 import TopMenuBar from "@/components/wasmgba/TopMenubar";
 import QuickControls from "@/components/wasmgba/QuickControls";
 import AboutDialog from "@/components/wasmgba/AboutDialog";
 import UsageDialog from "@/components/wasmgba/UsageDialog";
 import IntroAnimationPlayer from "@/components/wasmgba/IntroAnimationPlayer";
-import { useTheme } from "@/lib/ThemeProviderUseTheme";
 import ManageCheatDialog from "@/components/wasmgba/ManageCheatsDialog";
 
 function App() {
@@ -21,34 +20,6 @@ function App() {
   const [pixelated, setPixelated] = useState(false);
 
   const introAnimationPlayerRef = useRef<HTMLVideoElement | null>(null);
-
-  // light/dark mode
-  const [_mode, setMode] = useState("light");
-  const { setTheme } = useTheme();
-  const onSelectMode = (mode: string) => {
-    setMode(mode);
-    setTheme(mode);
-  };
-
-  useEffect(() => {
-    window
-      .matchMedia("(prefers-color-scheme: dark)")
-      .addEventListener("change", (e) =>
-        onSelectMode(e.matches ? "dark" : "light")
-      );
-
-    onSelectMode(
-      window.matchMedia("(prefers-color-scheme: dark)").matches
-        ? "dark"
-        : "light"
-    );
-
-    return () => {
-      window
-        .matchMedia("(prefers-color-scheme: dark)")
-        .removeEventListener("change", () => {});
-    };
-  });
 
   // event handlers
   const onImportROM = () => {
