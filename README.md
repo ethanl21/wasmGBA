@@ -2,7 +2,6 @@
 
 [![build workflow status](https://img.shields.io/github/actions/workflow/status/ethanl21/wasmgba/deploy-pages.yml)](https://github.com/ethanl21/wasmGBA/actions/workflows/deploy-pages.yml)
 [![lint workflow status](https://img.shields.io/github/actions/workflow/status/ethanl21/wasmgba/lint.yml?label=lint)](https://github.com/ethanl21/wasmGBA/actions/workflows/lint.yml)
-[![badge linking to storybook](https://img.shields.io/badge/Storybook-ff4785?logo=storybook&logoColor=white&labelColor=gray&color=ff4785)](https://main--64af9d812dc042a1d4205e5f.chromatic.com)
 
 (TODO insert screenshot)
 wasmGBA is a web-based frontend for [mGBA](https://github.com/mgba-emu/mgba). It is a static Single Page App that plays user-provided Gameboy, Gameboy Color, and Gameboy Advance ROMs.
